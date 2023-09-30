@@ -20,6 +20,10 @@ TextStyle greyTextStyle = TextStyle(
   fontFamily: 'Poppins',
   color: greyColor,
 );
+TextStyle whiteTextStyle = TextStyle(
+  fontFamily: 'Poppins',
+  color: whiteColor,
+);
 
 // FontWeight
 FontWeight medium = FontWeight.w500;
