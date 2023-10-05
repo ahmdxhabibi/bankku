@@ -32,6 +32,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
       body: Column(
         children: [
           CarouselSlider(
+              carouselController: controller,
               items: [
                 Image.asset(
                   'assets/onboarding1.png',
@@ -86,67 +87,112 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   style: greyTextStyle.copyWith(fontSize: 16),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(
-                  height: 50,
+                SizedBox(
+                  height: currentIndex == 2 ? 38 : 50,
                 ),
-                Row(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(right: 10),
-                      height: 12,
-                      width: 12,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: currentIndex == 0
-                            ? const Color(0xFF53C1F9)
-                            : const Color(0xFFF1F1F9),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(right: 10),
-                      height: 12,
-                      width: 12,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: currentIndex == 1
-                            ? const Color(0xFF53C1F9)
-                            : const Color(0xFFF1F1F9),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(right: 10),
-                      height: 12,
-                      width: 12,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: currentIndex == 2
-                            ? const Color(0xFF53C1F9)
-                            : const Color(0xFFF1F1F9),
-                      ),
-                    ),
-                    const Spacer(),
-                    Container(
-                      height: 50,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(56),
-                        color: primaryColor,
-                      ),
-                      child: TextButton(
-                        onPressed: () {
-                          // controller.nextPage();
-                        },
-                        child: Text(
-                          'Continue',
-                          style: whiteTextStyle.copyWith(
-                            fontSize: 16,
-                            fontWeight: semiBold,
+                currentIndex == 2
+                    ? Column(
+                        children: [
+                          SizedBox(
+                            height: 50,
+                            width: 283,
+                            child: TextButton(
+                              style: TextButton.styleFrom(
+                                backgroundColor: primaryColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(56),
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/sign-up');
+                              },
+                              child: Text(
+                                'Get Started',
+                                style: whiteTextStyle.copyWith(
+                                  fontSize: 16,
+                                  fontWeight: semiBold,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          TextButton(
+                            // style: TextButton.styleFrom(
+                            //   padding: EdgeInsets.zero,)
+                            // ),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/sign-in');
+                            },
+                            child: Text(
+                              'Sign In',
+                              style: whiteTextStyle.copyWith(
+                                color: const Color(0xff696B76),
+                                fontSize: 16,
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    : Row(
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            height: 12,
+                            width: 12,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: currentIndex == 0
+                                  ? const Color(0xFF53C1F9)
+                                  : const Color(0xFFF1F1F9),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            height: 12,
+                            width: 12,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: currentIndex == 1
+                                  ? const Color(0xFF53C1F9)
+                                  : const Color(0xFFF1F1F9),
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(right: 10),
+                            height: 12,
+                            width: 12,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color(0xFFF1F1F9),
+                            ),
+                          ),
+                          const Spacer(),
+                          SizedBox(
+                            height: 50,
+                            width: 150,
+                            child: TextButton(
+                              style: TextButton.styleFrom(
+                                backgroundColor: primaryColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(56),
+                                ),
+                              ),
+                              onPressed: () {
+                                controller.nextPage();
+                              },
+                              child: Text(
+                                'Continue',
+                                style: whiteTextStyle.copyWith(
+                                  fontSize: 16,
+                                  fontWeight: semiBold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
               ],
             ),
           ),

@@ -1,4 +1,5 @@
 import 'package:bankku/ui/onboarding_page.dart';
+import 'package:bankku/ui/sign_in_page.dart';
 import 'package:bankku/ui/splash_page.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashPage(),
         '/onboarding': (context) => const OnboardingPage(),
+        '/sign-in': (context) => const SigninPage(),
       },
     );
   }
