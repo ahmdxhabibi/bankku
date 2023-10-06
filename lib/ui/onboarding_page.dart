@@ -1,4 +1,5 @@
 import 'package:bankku/shared/theme.dart';
+import 'package:bankku/ui/widgets/costum_button.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -93,46 +94,21 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 currentIndex == 2
                     ? Column(
                         children: [
-                          SizedBox(
-                            height: 50,
-                            width: 283,
-                            child: TextButton(
-                              style: TextButton.styleFrom(
-                                backgroundColor: primaryColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(56),
-                                ),
-                              ),
-                              onPressed: () {
-                                Navigator.pushNamed(context, '/sign-up');
-                              },
-                              child: Text(
-                                'Get Started',
-                                style: whiteTextStyle.copyWith(
-                                  fontSize: 16,
-                                  fontWeight: semiBold,
-                                ),
-                              ),
-                            ),
+                          CostumButton(
+                            text: "Get Started",
+                            onpressed: () {
+                              Navigator.pushNamed(context, '/sign-up');
+                            },
                           ),
                           const SizedBox(
                             height: 20,
                           ),
-                          TextButton(
-                            // style: TextButton.styleFrom(
-                            //   padding: EdgeInsets.zero,)
-                            // ),
-                            onPressed: () {
+                          CustomTextButton(
+                            text: "Sign In",
+                            onpressed: () {
                               Navigator.pushNamed(context, '/sign-in');
                             },
-                            child: Text(
-                              'Sign In',
-                              style: whiteTextStyle.copyWith(
-                                color: const Color(0xff696B76),
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
+                          )
                         ],
                       )
                     : Row(
@@ -169,27 +145,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             ),
                           ),
                           const Spacer(),
-                          SizedBox(
-                            height: 50,
+                          CostumButton(
+                            text: "Continue",
                             width: 150,
-                            child: TextButton(
-                              style: TextButton.styleFrom(
-                                backgroundColor: primaryColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(56),
-                                ),
-                              ),
-                              onPressed: () {
-                                controller.nextPage();
-                              },
-                              child: Text(
-                                'Continue',
-                                style: whiteTextStyle.copyWith(
-                                  fontSize: 16,
-                                  fontWeight: semiBold,
-                                ),
-                              ),
-                            ),
+                            onpressed: () {
+                              controller.nextPage();
+                            },
                           ),
                         ],
                       )
